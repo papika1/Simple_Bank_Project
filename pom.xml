@@ -12,12 +12,12 @@
 
     <name>Simple Bank</name>
     <description>A simple Java and MySQL banking application.</description>
-
+ 
     <properties>
         <maven.compiler.release>21</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
+ 
     <dependencies>
 
         <dependency>
