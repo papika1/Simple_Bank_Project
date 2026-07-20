@@ -1,6 +1,6 @@
 package com.simplebank.model;
 
-public enum TransactionTypae {
+public enum TransactionType {
     DEPOSIT,
     WITHDRAWAL,
     TRANSFER_IN,
