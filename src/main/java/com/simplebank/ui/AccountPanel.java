@@ -1,6 +1,7 @@
 package com.simplebank.ui;
 
 import com.simplebank.dao.AccountDAO;
+import com.simplebank.dao.UserDAO;
 import com.simplebank.model.AccountStatus;
 import com.simplebank.model.AccountType;
 import com.simplebank.model.BankAccount;
@@ -14,6 +15,7 @@ import java.time.LocalDate;
 public class AccountPanel extends JPanel {
 
     private final AccountDAO accountDAO;
+    private final UserDAO userDAO;
 
     private final DefaultTableModel tableModel;
     private final JTable table;
@@ -23,10 +25,10 @@ public class AccountPanel extends JPanel {
 
     private final JComboBox<AccountType> typeComboBox;
 
-    public AccountPanel(AccountDAO accountDAO) {
+    public AccountPanel(AccountDAO accountDAO,UserDAO userDAO) {
 
         this.accountDAO = accountDAO;
-
+        this.userDAO = userDAO;
         setLayout(new BorderLayout(10, 10));
 
         setBorder(BorderFactory.createEmptyBorder(
@@ -139,7 +141,17 @@ public class AccountPanel extends JPanel {
                     Integer.parseInt(
                             customerIdField.getText().trim()
                     );
+            
+            if (userDAO.findById(customerId).isEmpty()) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Customer not found with ID: " + customerId,
+                        "Customer Not Found",
+                        JOptionPane.WARNING_MESSAGE
+                );
 
+                return;
+            }
             String accountNumber =
                     accountNumberField.getText().trim();
 

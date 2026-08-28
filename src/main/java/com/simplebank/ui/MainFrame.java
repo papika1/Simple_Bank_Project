@@ -30,7 +30,7 @@ public class MainFrame extends JFrame {
 
         tabbedPane.addTab(
                 "Accounts",
-                new AccountPanel(accountDAO)
+                new AccountPanel(accountDAO, userDAO)
         );
 
         tabbedPane.addTab(
